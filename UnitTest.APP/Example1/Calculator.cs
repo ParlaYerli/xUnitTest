@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace UnitTest.APP
+namespace UnitTest.APP.Example1
 {
     public class Calculator
     {
+
         public int add(int a , int b)
         {
             return a + b;

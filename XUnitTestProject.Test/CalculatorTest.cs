@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using UnitTest.APP;
+using UnitTest.APP.Example1;
 using Xunit;
 
 namespace XUnitTestProject.Test
@@ -46,7 +47,7 @@ namespace XUnitTestProject.Test
         [Theory]
         [InlineData(0, 4, 0)]
         [InlineData(3, 0, 0)]
-        public void add_zeroValues_returnZeroValue(int a, int b, int expectedTotal)
+        public void add_zeroValues_returnZeroValue (int a, int b, int expectedTotal)
         {
             int actualTotal = calculator.Add(a, b);
             Assert.Equal(expectedTotal, actualTotal);
