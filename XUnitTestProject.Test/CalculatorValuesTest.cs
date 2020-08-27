@@ -24,5 +24,13 @@ namespace XUnitTestProject.Test
             var actualTotal = calculatorValues.add(a, b);
             Assert.Equal(expectedTotal, actualTotal);
         }
+        [Theory]
+        [InlineData(2, 8, 16)]
+        public void Multip_simpleValues_ReturnTotalValues(int a,int b,int exmpectedTotal)
+        {
+            mymock.Setup(x => x.multip(a, b)).Returns(exmpectedTotal);
+            var actualTotal = calculatorValues.multip(a, b);
+            Assert.Equal(exmpectedTotal, actualTotal);
+        }
     }
 }

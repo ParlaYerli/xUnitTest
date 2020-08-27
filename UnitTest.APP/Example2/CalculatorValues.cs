@@ -16,5 +16,10 @@ namespace UnitTest.APP.Example2
         {
             return calculatorService.add(a, b);
         }
+
+        public int multip(int a, int b)
+        {
+            return calculatorService.multip(a, b);
+        }
     }
 }
