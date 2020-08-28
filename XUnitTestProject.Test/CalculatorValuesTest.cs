@@ -27,12 +27,17 @@ namespace XUnitTestProject.Test
         }
         [Theory]
         [InlineData(2, 8, 16)]
-        public void Multip_simpleValues_ReturnTotalValues(int a,int b,int exmpectedTotal)
+        public void Multip_simpleValues_ReturnTotalValues(int a,int b,int expectedTotal)
         {
-            mymock.Setup(x => x.multip(a, b)).Returns(exmpectedTotal);
-            var actualTotal = calculatorValues.multip(a, b);
-            Assert.Equal(exmpectedTotal, actualTotal);
+            int actualMultip = 0;
+            mymock.Setup(x => x.multip(It.IsAny<int>(), It.IsAny<int>())).Callback<int, int>((x, y) => actualMultip = x * y);
+            calculatorValues.multip(a, b);
+            Assert.Equal(expectedTotal, actualMultip);
+
+            calculatorValues.multip(22, 2);
+            Assert.Equal(44, actualMultip);
         }
+
         [Theory]
         [InlineData(0,3)]
         public void Multip_ZeroValue_ReturnsException(int a,int b)
@@ -40,8 +45,6 @@ namespace XUnitTestProject.Test
             mymock.Setup(x => x.multip(a, b)).Throws(new Exception("a olamaz!"));
             Exception exception = Assert.Throws<Exception>(() => calculatorValues.multip(a,b));
             Assert.Equal("a=0 olamaz!", exception.Message);
-
-
         }
     }
 }
