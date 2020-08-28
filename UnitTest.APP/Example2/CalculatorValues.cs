@@ -19,6 +19,10 @@ namespace UnitTest.APP.Example2
 
         public int multip(int a, int b)
         {
+            if (a==0)
+            {
+                throw new Exception("a=0 olamaz!");
+            }
             return calculatorService.multip(a, b);
         }
     }
